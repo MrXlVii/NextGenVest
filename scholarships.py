@@ -1,22 +1,17 @@
-"""Rough draft brute force solutions"""
-
+from flask import Flask, jsonify, request
 import numpy as np
-import requests
 
+scholarships = Flask(__name__)
 
-def main():
-    """
-    req = requests.get(url)  # Not sure what url to get
-    req.json()
+data = [[1,2,3,4,5], [1,1,2,3,5], [3,4,5,5,5], [3,4,5,9,5], [1,1,5,5,25]]  # Our pseudo-database
 
-    scholarships = req[data]
-    total = self.findGreatest(scholarships, 11)
-
-    r = requests.post(url, data=total)
-    """
+@scholarships.route('/', methods=['GET'])
+def get_data():
+    return jsonify({'data': data})
 
 
 def findGreatest(lists, k):
+
     matrix = np.array(lists)
     print matrix
 
@@ -25,7 +20,7 @@ def findGreatest(lists, k):
     print horizontal
 
     # Vertical span
-    vertMat = map(list, zip(*matrix))  # Vertical colums work as rows
+    vertMat = map(list, zip(*matrix))  # Vertical columns work as rows
     vertical = spanLists(vertMat, k)
     print vertical
 
@@ -50,7 +45,6 @@ def findGreatest(lists, k):
 
 def spanLists(lists, k):
     """Takes in matrix, finds k consecutive values that multiply to largest value"""
-    print lists
     sequence = []
     maxTotal = 0
     tmp = 0
@@ -78,4 +72,4 @@ def spanLists(lists, k):
     return response
 
 if __name__ == '__main__':
-    main()
+    scholarships.run(debug=True)
