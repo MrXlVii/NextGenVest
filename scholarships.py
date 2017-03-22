@@ -1,9 +1,15 @@
-from flask import Flask, jsonify, request, abort, make_response
+from flask import Flask, jsonify, make_response
 import numpy as np
 
 scholarships = Flask(__name__)
 
-data = [[1,2,3,4,5], [1,1,2,3,5], [3,4,5,5,5], [3,4,5,9,5], [1,1,5,5,25]]  # Our pseudo-database
+# Our pseudo-database:
+data = []  # Put lists in this list
+"""
+In case you're generating with np.random.randint:
+
+data = data.tolist()
+"""
 max_scholarship = []
 
 
@@ -11,16 +17,19 @@ max_scholarship = []
 def getData():
     return jsonify({'data': data})
 
+
 @scholarships.route('/max_scholarship', methods=['GET'])
 def getMaxScholarship():
     return jsonify(max_scholarship)
 
+
 @scholarships.route('/max_scholarship', methods=['POST'])
 def maxScholarship():
     ms = MaxScholarship()
-    vals = ms.findGreatest(data, 3)
+    vals = ms.findGreatest(data, 11)
     max_scholarship.append(vals)
     return jsonify(max_scholarship), 201
+
 
 @scholarships.errorhandler(404)
 def not_found(error):
@@ -53,7 +62,6 @@ class MaxScholarship(object):
                 correct = val
             else:
                 pass
-
         return correct
 
 
