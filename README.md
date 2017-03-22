@@ -1,29 +1,30 @@
 # NextGenVest
 Create a REST API that determines maximum scholarship amount
 
-## Resources and Actions
-URL                 METHOD        OPERATION
-/                   GET           displays data from psuedo-database
-/max_scholarship    GET           displays max_scholarship
-/max_scholarship    POST          runs algorithm, posts to max_scholarship
+# Resources and Actions
+URL | METHOD | OPERATION
+----|--------|----------
+/ | GET | displays data from psuedo-database
+/max_scholarship | GET | displays max_scholarship
+/max_scholarship | POST | runs algorithm, posts to max_scholarship
 
 # Required
-- Numpy ( pip install numpy )
-- Flask ( pip install flask )
+- Numpy `pip install numpy`
+- Flask `pip install flask`
 - curl (or any POST handler)
 
 # Build Instructions
 - Clone the repo
 - Edit the scholarships.py file and enter the lists of lists into data, or generate random via numpy
 - Run flask
-    1. $ export FLASK_APP=scholarships.py
-    2. $ flask run
+  > `$ export FLASK_APP=scholarships.py`
+  > `$ flask run`
 - open a second window in the terminal
 - use curl for GET request
-    1. $ curl -i http://localhost:5000/ (to see data)
-    2. $ curl -i http://localhost:5000/max_scholarship (to see output)
+  > `$ curl -i http://localhost:5000/` (to see data)
+  > `$ curl -i http://localhost:5000/max_scholarship` (to see output)
 - use curl for POST request
-    1. $ curl -i -H "Content-Type: application/json" -X POST http://localhost:5000/max_scholarship
+  > `$ curl -i -H "Content-Type: application/json" -X POST http://localhost:5000/max_scholarship`
 
 # Notes
 I emailed Will, but I never received a response. I wasn't 100% sure how to handle the GET request namely because I wasn't sure how you were interacting with my code. Due to time constraints I just chose a direct (albeit ugly) method because I needed to begin the process. Whomever is looking through the code essentially puts the lists into my pseudo-database. I make GET requests to the "database", then everything goes from there. 
