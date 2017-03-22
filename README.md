@@ -1,7 +1,7 @@
 # NextGenVest
 Create a REST API that determines maximum scholarship amount
 
-# Resources and Actions
+## Resources and Actions
 URL                 METHOD        OPERATION
 /                   GET           displays data from psuedo-database
 /max_scholarship    GET           displays max_scholarship
